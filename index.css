@@ -1,0 +1,388 @@
+@import "tailwindcss";
+
+:root {
+  --primary: #2563eb;
+  --primary-hover: #1d4ed8;
+  --danger: #dc2626;
+  --danger-hover: #b91c1c;
+  --gray-100: #f3f4f6;
+  --gray-200: #e5e7eb;
+  --gray-300: #d1d5db;
+  --gray-400: #9ca3af;
+  --gray-700: #374151;
+  --excel-green: #107c41;
+  --excel-green-hover: #0b5931;
+  --amber-500: #f59e0b;
+  --amber-600: #d97706;
+}
+
+body {
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+  color: var(--gray-700);
+  background-color: #fafafa;
+  margin: 0;
+  padding: 0;
+}
+
+/* Button variants matching user's design */
+.btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  padding: 0.6rem 1.2rem;
+  border-radius: 6px;
+  border: none;
+  font-weight: 600;
+  cursor: pointer;
+  font-size: 0.95rem;
+  transition: background-color 0.15s ease, transform 0.05s ease;
+  user-select: none;
+}
+.btn:active {
+  transform: scale(0.99);
+}
+
+.btn-primary {
+  background: var(--primary);
+  color: white;
+}
+.btn-primary:hover {
+  background: var(--primary-hover);
+}
+
+.btn-secondary {
+  background: var(--gray-200);
+  color: var(--gray-700);
+}
+.btn-secondary:hover {
+  background: #cbd5e1;
+}
+
+.btn-success {
+  background: #16a34a;
+  color: white;
+}
+.btn-success:hover {
+  background: #15803d;
+}
+
+.btn-danger {
+  background: var(--danger);
+  color: white;
+}
+.btn-danger:hover {
+  background: var(--danger-hover);
+}
+
+.btn-amber, .btn-warning {
+  background: var(--amber-500);
+  color: white;
+}
+.btn-amber:hover, .btn-warning:hover {
+  background: var(--amber-600);
+}
+
+/* Switch & Pill Controls */
+.switch-btn {
+  padding: 0.4rem 0.8rem;
+  background: var(--gray-100);
+  border: 1px solid var(--gray-300);
+  border-radius: 4px;
+  cursor: pointer;
+  font-weight: 600;
+  color: var(--gray-700);
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  transition: background 0.2s;
+  font-size: 0.875rem;
+}
+.switch-btn:hover:not(:disabled) {
+  background: #e5e7eb;
+}
+.switch-btn:disabled {
+  cursor: not-allowed;
+  opacity: 0.6;
+}
+
+.sub-toggle-pill {
+  font-weight: bold;
+  padding: 2px 6px;
+  border-radius: 3px;
+  margin-left: 6px;
+  transition: all 0.2s ease;
+}
+
+.btn-toggle-time {
+  padding: 0.4rem 0.8rem;
+  font-size: 0.85rem;
+  font-weight: 600;
+  background: white;
+  border: 1px solid var(--gray-300);
+  border-radius: 4px;
+  color: var(--gray-700);
+  cursor: pointer;
+  box-shadow: 0 1px 2px rgba(0,0,0,0.05);
+  transition: border-color 0.2s, color 0.2s;
+}
+.btn-toggle-time:hover {
+  border-color: var(--primary);
+  color: var(--primary);
+}
+
+/* Filter controls */
+.filter-panel {
+  background: #ffffff;
+  border: 1px solid var(--gray-300);
+  padding: 1.25rem;
+  border-radius: 6px;
+  margin-top: 1rem;
+  box-shadow: 0 1px 2px rgba(0,0,0,0.05);
+}
+
+.filter-input {
+  padding: 0.45rem 0.6rem;
+  border-radius: 4px;
+  border: 1px solid var(--gray-300);
+  font-size: 0.875rem;
+  width: 100%;
+  box-sizing: border-box;
+}
+.filter-input:focus {
+  outline: none;
+  border-color: var(--primary);
+}
+
+.toggle-link {
+  font-size: 0.75rem;
+  color: var(--primary);
+  cursor: pointer;
+  text-decoration: underline;
+  user-select: none;
+  font-weight: normal;
+}
+
+/* Excel Spreadsheet Table Styles */
+#master-table {
+  border-collapse: collapse;
+  width: 100%;
+  background: white;
+}
+
+#master-table th, #master-table td {
+  border: 1px solid var(--gray-200);
+  padding: 0.5rem;
+  font-size: 0.875rem;
+  white-space: nowrap;
+}
+
+.excel-row-header {
+  background: var(--gray-100) !important;
+  font-weight: bold;
+  text-align: center;
+  user-select: none;
+  color: #4b5563;
+  width: 48px;
+  min-width: 48px;
+}
+
+/* Cell Inputs */
+td input {
+  width: 100%;
+  border: 1px solid transparent;
+  background: transparent;
+  padding: 0.25rem 0.2rem;
+  font-size: 0.875rem;
+  color: var(--gray-700);
+  box-sizing: border-box;
+}
+td input:focus {
+  border-color: var(--primary);
+  background: white;
+  outline: none;
+  border-radius: 4px;
+}
+
+/* Duplicate Highlight Rule - soft, eye-friendly yellow palette */
+tr.duplicate-highlight td:not(.excel-row-header) {
+  background-color: #fefce8 !important; /* Soft pastel cream yellow */
+}
+tr.duplicate-highlight-current td:not(.excel-row-header) {
+  background-color: #fef3c7 !important; /* Gentle warm amber yellow */
+}
+
+/* Dragging Indicators */
+.draggable-header, .draggable-row {
+  cursor: grab !important;
+}
+.draggable-header:active, .draggable-row:active {
+  cursor: grabbing !important;
+}
+
+/* Continuous full-height column drop line indicator */
+.header-drag-over-left,
+th.column-drag-over-left-cell,
+td.column-drag-over-left-cell {
+  border-left: 3px solid #2563eb !important;
+  background-color: #eff6ff !important;
+}
+.header-drag-over-right,
+th.column-drag-over-right-cell,
+td.column-drag-over-right-cell {
+  border-right: 3px solid #2563eb !important;
+  background-color: #eff6ff !important;
+}
+.row-drag-over-top td {
+  border-top: 3px dashed var(--primary) !important;
+}
+.row-drag-over-bottom td {
+  border-bottom: 3px dashed var(--primary) !important;
+}
+
+/* Full-column transparent appearance of the column being moved */
+.header-dragging,
+th.column-dragging-cell,
+td.column-dragging-cell {
+  background-color: #f1f5f9 !important;
+  opacity: 0.45 !important;
+}
+
+/* Find & Replace match cell styling */
+td.find-match-cell {
+  background-color: #fef9c3 !important;
+  outline: 1px solid #facc15 !important;
+}
+td.find-match-active-cell {
+  background-color: #bfdbfe !important;
+  outline: 2px solid #2563eb !important;
+  font-weight: 700 !important;
+}
+
+/* CRITICAL: "i don't want the row number to be highlighted when a row is being movement" */
+/* So .row-dragging only styles data cells, leaving .excel-row-header neutral */
+tr.row-dragging td:not(.excel-row-header) {
+  background-color: #dbeafe !important;
+}
+tr.row-dragging td.excel-row-header {
+  background-color: var(--gray-100) !important;
+  color: #64748b !important;
+}
+
+/* Sheer drag ghost preview */
+.drag-sheer-ghost {
+  opacity: 0.45;
+  background: rgba(255, 255, 255, 0.9);
+  backdrop-filter: blur(4px);
+  border: 1px solid var(--primary);
+  border-radius: 4px;
+  box-shadow: 0 10px 25px -5px rgba(37, 99, 235, 0.25);
+  pointer-events: none;
+}
+
+/* CSS Lock Icon */
+.lock-container {
+  cursor: pointer;
+  background: transparent;
+  border: none;
+  padding: 4px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  transition: transform 0.1s ease;
+}
+.lock-container:hover {
+  transform: scale(1.15);
+}
+.css-lock {
+  width: 14px;
+  height: 11px;
+  background-color: #9ca3af;
+  border-radius: 3px;
+  position: relative;
+  margin-top: 6px;
+  transition: background-color 0.2s;
+}
+.css-lock::before {
+  content: "";
+  position: absolute;
+  border: 2px solid #9ca3af;
+  border-bottom: none;
+  border-top-left-radius: 6px;
+  border-top-right-radius: 6px;
+  width: 6px;
+  height: 7px;
+  left: 2px;
+  top: -7px;
+  transition: transform 0.2s, left 0.2s, border-color 0.2s;
+}
+.lock-container.is-locked .css-lock {
+  background-color: #dc2626;
+}
+.lock-container.is-locked .css-lock::before {
+  border-color: #dc2626;
+  transform: translate(0, 0);
+}
+.lock-container.is-unlocked .css-lock::before {
+  transform: translate(2px, -2px) rotate(15deg);
+}
+
+/* CSS Arrow Icon */
+.css-arrow-icon {
+  display: inline-block;
+  width: 0;
+  height: 0;
+  border-left: 5px solid transparent;
+  border-right: 5px solid transparent;
+  vertical-align: middle;
+  margin-left: 6px;
+  cursor: pointer;
+  transition: transform 0.2s, border-color 0.2s;
+}
+.css-arrow-icon.arrow-up {
+  border-bottom: 7px solid #2563eb;
+}
+.css-arrow-icon.arrow-down {
+  border-top: 7px solid #2563eb;
+}
+.css-arrow-icon.is-disabled {
+  border-bottom-color: #9ca3af !important;
+  border-top-color: #9ca3af !important;
+  cursor: not-allowed;
+}
+.css-arrow-icon:hover:not(.is-disabled) {
+  transform: scale(1.3);
+}
+
+/* CSS Trash Icon */
+.css-trash-icon {
+  width: 12px;
+  height: 14px;
+  position: relative;
+  border: 2px solid currentColor;
+  border-bottom-left-radius: 2px;
+  border-bottom-right-radius: 2px;
+  box-sizing: border-box;
+  display: inline-block;
+}
+.css-trash-icon::before {
+  content: "";
+  position: absolute;
+  top: -4px;
+  left: -3px;
+  width: 14px;
+  height: 2px;
+  background: currentColor;
+}
+.css-trash-icon::after {
+  content: "";
+  position: absolute;
+  top: -6px;
+  left: 2px;
+  width: 4px;
+  height: 2px;
+  border: 2px solid currentColor;
+  border-bottom: none;
+  border-top-left-radius: 1px;
+  border-top-right-radius: 1px;
+}

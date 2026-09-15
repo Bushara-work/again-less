@@ -1,0 +1,6 @@
+{
+  "name": "CSV Attendance Merger & Editor",
+  "description": "Merge, sort, filter, and edit attendance CSV reports with student rates, point evaluation, drag-and-drop column mapping, and duplicate row evaluation.",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}
